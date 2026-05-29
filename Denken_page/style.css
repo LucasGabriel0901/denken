@@ -287,7 +287,6 @@ body {
     gap: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.03);
     border: 1px solid rgba(0,0,0,0.05);
-    /* Transição modificada para não dar conflito com a animação de scroll */
     transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.8s ease-out;
 }
 
@@ -801,77 +800,230 @@ body {
     padding: 10px 15px;
 }
 
-/* Responsividade Responsiva / Mobile */
+/* Responsividade / Mobile */
+/* Responsividade / Mobile - Layout Lado a Lado (Estilo App) */
 @media (max-width: 900px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    /* 1. CABEÇALHO LADO A LADO */
+    .header-container {
+        gap: 5px;
+    }
+    .header-logo {
+        max-height: 25px; /* Reduzido para caber junto com o menu */
+    }
+    .nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+    .nav a {
+        margin: 0;
+        font-size: 0.5rem; /* Texto pequeno para caber no menu mobile */
+        text-align: center;
+    }
+    .btn-cta-header {
+        padding: 6px 8px;
+        font-size: 0.55rem;
+    }
+
+    /* 2. SEÇÃO HERO (Imagem na direita e texto na esquerda) */
     .hero {
-        flex-direction: column;
+        flex-direction: row; /* Força os elementos a ficarem lado a lado */
         text-align: left;
-        padding: 40px 20px;
-        gap: 40px;
+        padding: 30px 10px;
+        gap: 15px;
     }
     .hero-content {
-        max-width: 100%;
+        max-width: 55%;
     }
     .hero h1 {
-        font-size: 2.6rem;
+        font-size: 1.6rem;
+        margin-bottom: 15px;
     }
+    .hero p {
+        font-size: 0.75rem;
+        margin-bottom: 20px;
+    }
+    
+    /* Botões lado a lado */
     .hero-buttons {
-        justify-content: flex-start;
-        flex-wrap: wrap;
+        flex-direction: row; 
+        width: 100%;
+        gap: 5px;
     }
+    .hero-buttons .btn {
+        padding: 8px 5px;
+        font-size: 0.55rem;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* Benefícios lado a lado */
     .hero-benefits {
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        gap: 15px;
+        flex-direction: row; 
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 0.5rem;
     }
     .hero-image-container {
         justify-content: center;
-        width: 100%;
+        width: 45%;
     }
     .hero-image-wrapper {
-        height: 420px;
+        height: 350px;
         -webkit-mask-image: none;
         mask-image: none;
-        box-shadow: 0 10px 30px rgba(59, 32, 26, 0.1);
     }
-    .nav {
-        display: none;
+
+    /* 3. TÍTULOS E SUBTÍTULOS */
+    .section-title {
+        font-size: 1.4rem;
+        margin: 40px 0 15px;
     }
-    .passos-flex {
-        flex-direction: column;
-        align-items: center;
+    .section-subtitle {
+        font-size: 0.85rem;
     }
-    .passo-arrow {
-        transform: rotate(90deg); 
-        margin: 10px 0;
+
+    /* 4. GRIDS (Problemas e Estrutura) - 2 COLUNAS */
+    .problemas-grid, .estruturamos-grid {
+        grid-template-columns: 1fr 1fr; /* Força 2 colunas no celular */
+        gap: 10px;
     }
-    .fundadora-content {
-        flex-direction: column;
-        text-align: center;
+    .problema-card {
+        padding: 10px;
+        gap: 8px;
     }
-    .title-underline-left {
-        margin: 0 auto 25px auto; 
+    .problema-card i {
+        font-size: 1rem;
+    }
+    .problema-card p {
+        font-size: 0.65rem;
+    }
+    .estruturamos-card {
+        padding: 15px 10px;
+    }
+    .estruturamos-card i {
+        font-size: 1.5rem;
+    }
+    .estruturamos-card p {
+        font-size: 0.75rem;
+    }
+    .estruturamos-card small {
+        font-size: 0.55rem;
     }
     .card-large {
-        grid-column: span 1; 
+        grid-column: span 2; 
+    }
+
+    /* 5. PASSOS (Como a Denken ajuda) */
+    .passos-flex {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .passo {
+        width: 45%;
+        padding: 15px 10px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 12px;
+    }
+    .passo-arrow {
+        display: none; /* Oculta a seta no mobile para economizar espaço */
+    }
+    .passo-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    .passo h4 {
+        font-size: 0.85rem;
+    }
+    .passo p {
+        font-size: 0.65rem;
+    }
+
+    /* 6. FUNDADORA E CITAÇÃO */
+    .quote-box {
+        padding: 20px;
+    }
+    .quote-box h3 {
+        font-size: 1.1rem;
+    }
+    .fundadora-content {
+        flex-direction: row; /* Mantém imagem e texto lado a lado */
+        padding: 20px;
+        text-align: left;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    .title-underline-left {
+        margin: 0 0 15px 0; 
+    }
+    .fundadora-img-wrapper {
+        max-width: 40%;
+    }
+    .fundadora-texto {
+        flex: 1;
+    }
+    .fundadora-texto h3 {
+        font-size: 1.1rem;
+    }
+    .fundadora-texto p {
+        font-size: 0.7rem;
+    }
+    .fundadora-badges {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Badges em 2 colunas */
+        gap: 8px;
+        margin-top: 15px;
+    }
+    .fundadora-badges .badge {
+        padding: 8px;
+        font-size: 0.65rem;
+        gap: 5px;
+    }
+    .fundadora-badges .badge i {
+        font-size: 1rem;
+    }
+
+    /* 7. FAQ E RODAPÉ */
+    .faq-question {
+        font-size: 0.85rem;
+        padding: 15px;
+    }
+    .faq-answer {
+        font-size: 0.75rem;
     }
     .footer-content {
         flex-direction: column;
         text-align: center;
         align-items: center;
-        gap: 30px;
+        gap: 25px;
     }
     .footer-logo {
         align-items: center;
     }
     .footer-cta {
         text-align: center;
+        width: 100%;
     }
+    .footer-cta .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* 8. BOTÃO FLUTUANTE DO WHATSAPP */
     .whatsapp-float {
         width: 50px;
         height: 50px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 30px;
+        bottom: 15px;
+        right: 15px;
+        font-size: 28px;
     }
 }
